@@ -12,4 +12,15 @@ module.exports = (app) => {
             });    
     });
 
-}
+    app.post("/api/workouts", (req, res) => {
+        
+        Workout.create({"exercises" : req.body}, (error, data) => {
+            if (error) {
+            res.send(error);
+        } else {
+            res.send(data);
+            }
+        });
+    });
+
+};
